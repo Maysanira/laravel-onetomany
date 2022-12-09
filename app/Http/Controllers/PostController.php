@@ -4,21 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+      public function index()
     {
         //get all posts from Model
         $posts = Post::latest()->get();
 
         //passing posts to view
-        return view('posts', compact('posts'));
+        return view('post.posts', compact('posts'));
     }
 
     /**

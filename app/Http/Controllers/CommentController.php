@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class CommentController extends Controller
 {
