@@ -28,7 +28,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('post.tambahkomen');
+        return view('comment.create');
     }
 
     /**
@@ -39,20 +39,18 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //  //validate form
-        // // dd($request->all());
-        // $this->validate($request, [
-        //     // 'title' =>'required|min:0',
-        //     // 'content' =>'required|min:0',
-        //     'comment' =>'required|min:0'
-        // ]);
+         //validate form
+        // dd($request->all());
+        $this->validate($request, [
+            'comment' =>'required|min:1'
+        ]);
 
-        // //create post
+        //create post
         
-        // $post = Comment::create([
-        //     'post_id'=>$request->post_id,
-        //     'comment' =>$request->comment   
-        // ]);
+        $post = Comment::create([
+            'post_id'=>$request->post_id,
+            'comment' =>$request->comment   
+        ]);
         
       
      

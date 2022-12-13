@@ -25,6 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        // dd('re');
         return view('post.create');
     }
 
@@ -36,23 +37,24 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         //validate form
        
-        // $this->validate($request, [
+        $this->validate($request, [
             
-        //     'title'     => 'required|min:5',
-        //     'content'   => 'required|min:10'
-        // ]);
+            'title'     => 'required|min:1',
+            // 'content'   => 'required|min:1'
+        ]);
 
         // //create post
-        // Post::create([
+        Post::create([
             
-        //     'title'     => $request->title,
-        //     'content'   => $request->content
-        // ]);
+            'title'     => $request->title,
+            'content'   => $request->content
+        ]);
 
         // //redirect to index
-        // return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     /**

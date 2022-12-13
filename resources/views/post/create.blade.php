@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="a" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                         
                             @csrf
 
@@ -33,7 +33,19 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label class="font-weight-bold">Content</label>
+                                <!-- <input type="text" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" placeholder="Masukkan konten Post"> -->
+                                <textarea  class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" placeholder="Masukkan konten Post"></textarea>
                             
+                                <!-- error message untuk title -->
+                                @error('content')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
                             <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
                         </form> 

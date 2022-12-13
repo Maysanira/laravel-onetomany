@@ -21,14 +21,16 @@
                         </tr>
                         
                         <a href="{{route('posts.create')}}" class="btn btn-md btn-primary mb-4">Tambah Post</a>&nbsp
-                        <a href="{{route('posts.edit')}}" class="btn btn-md btn-primary mb-4">Edit Post</a>
+                        {{--<a href="{{route('posts.edit')}}" class="btn btn-md btn-primary mb-4">Edit Post</a>--}}
                     </thead>
                     <tbody>
                         <!-- perulangan data posts yang dikirimkan oleh controller -->
                         @foreach($posts as $post)
                             <tr>
-                                <td>{{ $post->title }}</td>
-                                
+                                <td>{{ $post->title }}  &nbsp &nbsp &nbsp
+                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Edit</a> 
+                                </td>
+                               
                                 <td>
                                
                                 <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>   
