@@ -17,17 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-/**
- * @path /users
- * @method GET
- */
-Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
 
-/**
- * @path /posts
- * @method GET
- */
-Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
+// Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
 
+
+// Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
+// Route::get('/addpost', [\App\Http\Controllers\PostController::class, 'create']);
+// Route::get('/addcoment', [\App\Http\Controllers\CommentController::class, 'tambahkomen']);
+Route::resource('/posts', \App\Http\Controllers\PostController::class);
+Route::resource('/comment', \App\Http\Controllers\CommentController::class);
 
 

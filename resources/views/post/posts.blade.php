@@ -19,18 +19,30 @@
                             <th>Judul Post</th>
                             <th>Komentar</th>
                         </tr>
+                        
+                        <a href="{{route('posts.create')}}" class="btn btn-md btn-primary mb-4">Tambah Post</a>&nbsp
+                        <a href="{{route('posts.edit')}}" class="btn btn-md btn-primary mb-4">Edit Post</a>
                     </thead>
                     <tbody>
                         <!-- perulangan data posts yang dikirimkan oleh controller -->
                         @foreach($posts as $post)
                             <tr>
                                 <td>{{ $post->title }}</td>
+                                
                                 <td>
+                               
+                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>   
+                                
                                     <!-- menampilkan relasi comment yg datanya lebih dari 1 -->
                                     @foreach($post->comments()->get() as $comment)
+                                    
                                         <div class="card shadow-sm mb-2">
                                             <div class="card-body">
                                                 <i class="fa fa-comments"></i> {{ $comment->comment }}
+                                        
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                                             </div>
                                         </div>
                                     @endforeach
