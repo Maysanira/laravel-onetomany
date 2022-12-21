@@ -27,8 +27,10 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        
         return view('comment.create');
+                
     }
 
     /**

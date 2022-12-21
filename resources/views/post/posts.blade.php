@@ -18,22 +18,25 @@
                         <tr>
                             <th>Judul Post</th>
                             <th>Komentar</th>
+                            
                         </tr>
                         
-                        <a href="{{route('posts.create')}}" class="btn btn-md btn-primary mb-4">Tambah Post</a>&nbsp
-                        {{--<a href="{{route('posts.edit')}}" class="btn btn-md btn-primary mb-4">Edit Post</a>--}}
+                        <a href="{{route('posts.create')}}" class="btn btn-md btn-primary mb-4">Tambah Post</a>
+                        
                     </thead>
                     <tbody>
                         <!-- perulangan data posts yang dikirimkan oleh controller -->
                         @foreach($posts as $post)
                             <tr>
                                 <td>{{ $post->title }}  &nbsp &nbsp &nbsp
-                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Edit</a> 
+                               <a href="{{ route('posts.edit',$post->id) }}" class="btn btn-md btn-success mb-3">Edit</a> 
                                 </td>
-                               
+                                
+                                
                                 <td>
-                               
-                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>   
+
+                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>
+                                  
                                 
                                     <!-- menampilkan relasi comment yg datanya lebih dari 1 -->
                                     @foreach($post->comments()->get() as $comment)
@@ -41,18 +44,28 @@
                                         <div class="card shadow-sm mb-2">
                                             <div class="card-body">
                                                 <i class="fa fa-comments"></i> {{ $comment->comment }}
-                                        
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('comment.destroy', $comment->post_id) }}" 
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
                                             </div>
                                         </div>
+                                         
                                     @endforeach
+                                    
                                 </td>
+                                
                             </tr>
+                            
                         @endforeach
                     </tbody>
+                    
                 </table>
+                <!-- <td class="text-center"> -->
+                
+                 
+               
             </div>
         </div>
     </div>

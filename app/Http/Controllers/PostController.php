@@ -76,6 +76,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // dd($posts->all());
+        $post;
         return view('post.edit', compact('post'));
     }
 
@@ -86,26 +88,24 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
+    
     public function update(Request $request, Post $post)
     {
-         //validate form
-         $this->validate($request, [
-            'title'    => 'required|min:1',
-            'content'  => 'required|min:2',
-                
+         
+        //validate form
+        $this->validate($request, [
+            'title'    => 'required|min:1'
+                           
         ]);
              //update post without image
-             $pengguna->update([
+             $post->update([
             'title'     => $request->title,
            
         ]);
-        // relasi dari tabel telepon ke tabel pengguna
         
-        // $telepon = Comment::where('post_id', $post->id)->update([
-        //     'nomortelepon'   => $request->nomortelepon
-        // ]);
         //redirect to index
-        return redirect()->route('pengguna.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Diubah!']);
         }
 
     /**
@@ -114,7 +114,7 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Comment $comment)
     {
          //delete post
          $post->delete();

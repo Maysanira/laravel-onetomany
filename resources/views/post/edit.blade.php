@@ -14,16 +14,15 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="a" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('posts.update', $post->id) }}"  method="POST" enctype="multipart/form-data">
                         
                             @csrf
+                            @method('PUT')
 
-                            <div class="form-group">
-
-                            
+                                                     
                             <div class="form-group">
                                 <label class="font-weight-bold">JUDUL</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" placeholder="">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $post->title }} " placeholder="">
                             
                                 <!-- error message untuk title -->
                                 @error('title')
