@@ -18,14 +18,13 @@
                         
                             @csrf
 
-                            <div class="form-group">
-
-                            
+                                                    
                             <div class="form-group">
                                 <div class="form-group">
                                 <label class="font-weight-bold">ID</label>
-                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="post_id" value="{{ $post->id }} " readonly>
-                            
+                                 
+                                <input value=" 1" type="text" class="form-control @error('title') is-invalid @enderror" name="post_id"   >
+                         
                                 <!-- error message untuk title -->
                                 @error('post_id')
                                     <div class="alert alert-danger mt-2">

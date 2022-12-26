@@ -35,7 +35,7 @@
                                 
                                 <td>
 
-                                <a href="{{route('comment.create')}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>
+                                <a href="{{route('comment.create',$post->id)}}" class="btn btn-md btn-success mb-3">Tambah Komentar</a>
                                   
                                 
                                     <!-- menampilkan relasi comment yg datanya lebih dari 1 -->
@@ -45,10 +45,13 @@
                                             <div class="card-body">
                                                 <i class="fa fa-comments"></i> {{ $comment->comment }}
                                                 
+                                                
+                                                
+                                                
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('comment.destroy', $comment->post_id) }}" 
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                <button type="submit" class="btn btn-sm btn-danger" value="delete">HAPUS</button>
                                             </div>
                                         </div>
                                          

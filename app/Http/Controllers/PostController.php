@@ -23,10 +23,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
         // dd('re');
-        return view('post.create');
+        $post = Post::latest()->paginate();
+        return view('post.create',compact('post'));
     }
 
     /**
@@ -116,6 +117,7 @@ class PostController extends Controller
      */
     public function destroy(Comment $comment)
     {
+        // dd($request->all());
          //delete post
          $post->delete();
 

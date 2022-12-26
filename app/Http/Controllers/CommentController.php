@@ -26,9 +26,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Comment $comment)
     {   
-        
+        $comment;
         return view('comment.create');
                 
     }
@@ -41,7 +41,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-         //validate form
+        //validate form
         // dd($request->all());
         $this->validate($request, [
             'comment' =>'required|min:1'
@@ -49,7 +49,7 @@ class CommentController extends Controller
 
         //create post
         
-        $post = Comment::create([
+        $comment = Comment::create([
             'post_id'=>$request->post_id,
             'comment' =>$request->comment   
         ]);
@@ -102,10 +102,11 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comments)
     {
+        dd($comments->all());
         //delete post
-        $comment->delete();
+        $comments->delete();
 
         //redirect to index
         return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Dihapus!']);
